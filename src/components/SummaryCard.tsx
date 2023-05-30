@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import Button from './Button';
+
 import icon from '../assets/icon-music.svg';
 import hero from '../assets/illustration-hero.svg';
 
@@ -22,8 +24,8 @@ const SummaryCard = () => {
           </PlanContainer>
           <Change>Change</Change>
         </PricePlan>
-        <Button>Proceed to Payment</Button>
-        <Cancel>Cancel Order</Cancel>
+        <Button type="button">Proceed to Payment</Button>
+        <Button type="cancel">Cancel Order</Button>
       </Content>
     </Card>
   );
@@ -96,35 +98,6 @@ const PricePlan = styled.div`
   @media (max-width: 340px) {
     flex-direction: column;
     padding: 1rem;
-  }
-`;
-
-const Button = styled.button`
-  background-color: var(--bright-blue);
-  color: white;
-  padding: 1rem;
-  border-radius: 15px;
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  box-shadow: 0px 10px 20px rgba(116, 108, 233, 0.4);
-  &:hover {
-    cursor: pointer;
-    background-color: var(--desaturated-bright-blue);
-  }
-`;
-
-const Cancel = styled.button`
-  color: var(--desaturated-blue);
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-  &:hover {
-    cursor: pointer;
-    color: var(--dark-blue);
   }
 `;
 
