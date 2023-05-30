@@ -5,7 +5,30 @@ import PricePlan from './PricePlan';
 
 import hero from '../assets/illustration-hero.svg';
 
+type PricePlanType = {
+  type: 'annual' | 'monthly';
+  amount: number;
+};
+
+type PricePlanMap = {
+  annual: PricePlanType;
+  monthly: PricePlanType;
+};
+
+const pricePlan: PricePlanMap = {
+  annual: {
+    type: 'annual',
+    amount: 59.99,
+  },
+  monthly: {
+    type: 'monthly',
+    amount: 6.99,
+  },
+};
+
 const SummaryCard = () => {
+  const [selectedPlan, setSelectedPlan] = React.useState(pricePlan.annual);
+
   return (
     <Card>
       <img src={hero} alt="placeholder" />
@@ -15,7 +38,11 @@ const SummaryCard = () => {
           You can now listen to millions of songs, audiobooks, and podcasts on
           any device anywhere you like!
         </Text>
-        <PricePlan />
+        <PricePlan
+          type={selectedPlan.type}
+          amount={selectedPlan.amount}
+          handleClick={(val) => setSelectedPlan(pricePlan[val])}
+        />
         <Button>Proceed to Payment</Button>
         <Cancel>Cancel Order</Cancel>
       </Content>

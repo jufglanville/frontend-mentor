@@ -3,15 +3,29 @@ import styled from 'styled-components';
 
 import icon from '../assets/icon-music.svg';
 
-const PricePlan = () => {
+interface Props {
+  type: 'annual' | 'monthly';
+  amount: number;
+  handleClick: (val: 'annual' | 'monthly') => void;
+}
+
+type ButtonProps = {
+  onClick: (event: React.MouseEventHandler<HTMLButtonElement>) => void;
+};
+
+const PricePlan = ({ type, amount, handleClick }: Props) => {
   return (
     <Container>
       <img src={icon} alt="Music Note" />
       <PriceContainer>
-        <Heading>Annual Plan</Heading>
-        <Text>$59.99/year</Text>
+        <Heading>{type} Plan</Heading>
+        <Text>${amount}/year</Text>
       </PriceContainer>
-      <ActionLink>Change</ActionLink>
+      <ActionLink
+        onClick={() => handleClick(type === 'annual' ? 'monthly' : 'annual')}
+      >
+        Change
+      </ActionLink>
     </Container>
   );
 };
@@ -41,10 +55,11 @@ const PriceContainer = styled.div`
   }
   @media (max-width: 340px) {
     margin: 1rem;
+    text-align: center;
   }
 `;
 
-const ActionLink = styled.button`
+const ActionLink = styled.button<ButtonProps>`
   color: var(--bright-blue);
   font-weight: 700;
   font-size: 0.85rem;
@@ -60,7 +75,6 @@ const ActionLink = styled.button`
 `;
 
 const Text = styled.p`
-  text-align: center;
   color: var(--desaturated-blue);
   line-height: 1;
   letter-spacing: 0.5px;
@@ -69,7 +83,7 @@ const Text = styled.p`
 const Heading = styled.h2`
   font-size: 1rem;
   font-weight: 900;
-  text-align: center;
+  text-transform: capitalize;
   color: var(--dark-blue);
 `;
 
