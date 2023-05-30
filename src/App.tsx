@@ -3,11 +3,17 @@ import styled from 'styled-components';
 import SummaryCard from './components/SummaryCard';
 
 import background from './assets/pattern-background-desktop.svg';
+import hero from './assets/illustration-hero.svg';
 
 const App = () => {
   return (
     <Body>
-      <SummaryCard />
+      <SummaryCard
+        image={hero}
+        heading="Order Summary"
+        text="You can now listen to millions of songs, audiobooks, and podcasts on
+          any device anywhere you like!"
+      />
     </Body>
   );
 };

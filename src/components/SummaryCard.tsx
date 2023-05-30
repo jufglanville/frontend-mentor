@@ -2,18 +2,20 @@ import React from 'react';
 import styled from 'styled-components';
 
 import icon from '../assets/icon-music.svg';
-import hero from '../assets/illustration-hero.svg';
 
-const SummaryCard = () => {
+interface Props {
+  image: string;
+  heading: string;
+  text: string;
+}
+
+const SummaryCard = ({ image, heading, text }: Props) => {
   return (
     <Card>
-      <img src={hero} alt="placeholder" />
+      <img src={image} alt="placeholder" />
       <Content>
-        <Heading>Order Summary</Heading>
-        <Text>
-          You can now listen to millions of songs, audiobooks, and podcasts on
-          any device anywhere you like!
-        </Text>
+        <Heading>{heading}</Heading>
+        <Text>{text}</Text>
         <PricePlan>
           <img src={icon} alt="Music Note" />
           <PlanContainer>
@@ -137,6 +139,7 @@ const Change = styled.button`
   &:hover {
     cursor: pointer;
     color: var(--desaturated-bright-blue);
+    text-decoration: none;
   }
   @media (max-width: 340px) {
     margin: 0;
