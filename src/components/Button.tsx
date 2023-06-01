@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 interface Props {
-  type: 'button' | 'cancel';
+  type: 'primary' | 'button';
   children: React.ReactNode;
 }
 
@@ -10,12 +10,12 @@ const Button = ({ type, children }: Props) => {
   return <ButtonElement buttonType={type}>{children}</ButtonElement>;
 };
 
-const ButtonElement = styled.button<{ buttonType: 'button' | 'cancel' }>`
+const ButtonElement = styled.button<{ buttonType: 'primary' | 'button' }>`
   background-color: ${(props) =>
-    props.buttonType === 'button' ? 'var(--bright-blue)' : 'none'};
+    props.buttonType === 'primary' ? 'var(--bright-blue)' : 'none'};
   color: ${(props) =>
-    props.buttonType === 'button' ? 'white' : 'var(--desaturated-blue)'};
-  padding: ${(props) => (props.buttonType === 'button' ? '1rem' : '0')};
+    props.buttonType === 'primary' ? 'white' : 'var(--desaturated-blue)'};
+  padding: ${(props) => (props.buttonType === 'primary' ? '1rem' : '0')};
   border-radius: 15px;
   width: 100%;
   text-align: center;
@@ -23,17 +23,17 @@ const ButtonElement = styled.button<{ buttonType: 'button' | 'cancel' }>`
   font-size: 0.85rem;
   letter-spacing: 0.5px;
   box-shadow: ${(props) =>
-    props.buttonType === 'button'
+    props.buttonType === 'primary'
       ? '0px 10px 20px rgba(116, 108, 233, 0.4)'
       : 'none'};
   &:hover {
     cursor: pointer;
     background-color: ${(props) =>
-      props.buttonType === 'button'
+      props.buttonType === 'primary'
         ? 'var(--desaturated-bright-blue)'
         : 'none'};
     color: ${(props) =>
-      props.buttonType === 'button' ? 'white' : 'var(--dark-blue)'};
+      props.buttonType === 'primary' ? 'white' : 'var(--dark-blue)'};
   }
 `;
 

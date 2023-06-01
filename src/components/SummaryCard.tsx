@@ -24,8 +24,8 @@ const SummaryCard = () => {
           </PlanContainer>
           <Change>Change</Change>
         </PricePlan>
-        <Button type="button">Proceed to Payment</Button>
-        <Button type="cancel">Cancel Order</Button>
+        <Button type="primary">Proceed to Payment</Button>
+        <Button type="button">Cancel Order</Button>
       </Content>
     </Card>
   );
