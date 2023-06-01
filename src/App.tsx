@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import SummaryCard from './components/SummaryCard';
+import PriceCard from './components/PriceCard';
 
 import background from './assets/pattern-background-desktop.svg';
 import hero from './assets/illustration-hero.svg';
@@ -8,7 +8,7 @@ import hero from './assets/illustration-hero.svg';
 const App = () => {
   return (
     <Body>
-      <SummaryCard
+      <PriceCard
         image={hero}
         heading="Order Summary"
         text="You can now listen to millions of songs, audiobooks, and podcasts on

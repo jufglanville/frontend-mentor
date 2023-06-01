@@ -9,7 +9,7 @@ interface Props {
   text: string;
 }
 
-const SummaryCard = ({ image, heading, text }: Props) => {
+const PriceCard = ({ image, heading, text }: Props) => {
   return (
     <Card>
       <img src={image} alt="placeholder" />
@@ -146,4 +146,4 @@ const Change = styled.button`
   }
 `;
 
-export default SummaryCard;
+export default PriceCard;
