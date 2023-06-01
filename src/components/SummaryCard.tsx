@@ -28,8 +28,7 @@ const SummaryCard = () => {
           any device anywhere you like!
         </Text>
         <PricePlan
-          type={selectedPlan.type}
-          amount={selectedPlan.amount}
+          plan={selectedPlan}
           handleClick={(val) => setSelectedPlan(pricePlan[val])}
         />
         <Button>Proceed to Payment</Button>

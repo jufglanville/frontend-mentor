@@ -1,11 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PriceType } from '../types';
+import { PlanType, PriceType } from '../types';
 import icon from '../assets/icon-music.svg';
 
 interface Props {
-  type: PriceType;
-  amount: number;
+  plan: PlanType;
   handleClick: (val: PriceType) => void;
 }
 
@@ -13,16 +12,18 @@ type ButtonProps = {
   onClick: (event: React.MouseEventHandler<HTMLButtonElement>) => void;
 };
 
-const PricePlan = ({ type, amount, handleClick }: Props) => {
+const PricePlan = ({ plan, handleClick }: Props) => {
   return (
     <Container>
       <img src={icon} alt="Music Note" />
       <PriceContainer>
-        <Heading>{type} Plan</Heading>
-        <Text>${amount}/year</Text>
+        <Heading>{plan.type} Plan</Heading>
+        <Text>${plan.amount}/year</Text>
       </PriceContainer>
       <ActionLink
-        onClick={() => handleClick(type === 'annual' ? 'monthly' : 'annual')}
+        onClick={() =>
+          handleClick(plan.type === 'annual' ? 'monthly' : 'annual')
+        }
       >
         Change
       </ActionLink>
