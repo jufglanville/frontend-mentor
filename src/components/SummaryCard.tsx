@@ -1,18 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import PricePlan from './PricePlan';
-import { PriceType } from '../types';
+import { PricePlanMap } from '../types';
 import hero from '../assets/illustration-hero.svg';
-
-type PricePlanType = {
-  type: PriceType;
-  amount: number;
-};
-
-type PricePlanMap = {
-  annual: PricePlanType;
-  monthly: PricePlanType;
-};
 
 const pricePlan: PricePlanMap = {
   annual: {
