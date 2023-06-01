@@ -4,10 +4,15 @@ import styled from 'styled-components';
 interface Props {
   type: 'primary' | 'button';
   children: React.ReactNode;
+  onClick: () => void;
 }
 
-const Button = ({ type, children }: Props) => {
-  return <ButtonElement buttonType={type}>{children}</ButtonElement>;
+const Button = ({ type, children, onClick }: Props) => {
+  return (
+    <ButtonElement buttonType={type} onClick={onClick}>
+      {children}
+    </ButtonElement>
+  );
 };
 
 const ButtonElement = styled.button<{ buttonType: 'primary' | 'button' }>`

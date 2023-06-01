@@ -7,6 +7,10 @@ import icon from '../assets/icon-music.svg';
 import hero from '../assets/illustration-hero.svg';
 
 const SummaryCard = () => {
+  const handleClick = () => {
+    console.log('clicked');
+  };
+
   return (
     <Card>
       <img src={hero} alt="placeholder" />
@@ -24,8 +28,12 @@ const SummaryCard = () => {
           </PlanContainer>
           <Change>Change</Change>
         </PricePlan>
-        <Button type="primary">Proceed to Payment</Button>
-        <Button type="button">Cancel Order</Button>
+        <Button type="primary" onClick={handleClick}>
+          Proceed to Payment
+        </Button>
+        <Button type="button" onClick={handleClick}>
+          Cancel Order
+        </Button>
       </Content>
     </Card>
   );
