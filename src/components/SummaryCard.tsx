@@ -1,12 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-
 import PricePlan from './PricePlan';
-
+import { PriceType } from '../types';
 import hero from '../assets/illustration-hero.svg';
 
 type PricePlanType = {
-  type: 'annual' | 'monthly';
+  type: PriceType;
   amount: number;
 };
 

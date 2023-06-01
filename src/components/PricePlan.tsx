@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-
+import { PriceType } from '../types';
 import icon from '../assets/icon-music.svg';
 
 interface Props {
-  type: 'annual' | 'monthly';
+  type: PriceType;
   amount: number;
-  handleClick: (val: 'annual' | 'monthly') => void;
+  handleClick: (val: PriceType) => void;
 }
 
 type ButtonProps = {
