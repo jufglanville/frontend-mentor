@@ -3,13 +3,19 @@ import styled from 'styled-components';
 
 import icon from '../assets/icon-music.svg';
 
+type PricePlan = {
+  heading: string;
+  text: string;
+};
+
 interface Props {
+  pricePlan: PricePlan;
   image: string;
   heading: string;
   text: string;
 }
 
-const PriceCard = ({ image, heading, text }: Props) => {
+const PriceCard = ({ pricePlan, image, heading, text }: Props) => {
   return (
     <Card>
       <img src={image} alt="placeholder" />
@@ -19,8 +25,8 @@ const PriceCard = ({ image, heading, text }: Props) => {
         <PricePlan>
           <img src={icon} alt="Music Note" />
           <PlanContainer>
-            <PlanHeading>Annual Plan</PlanHeading>
-            <PlanText>$59.99/year</PlanText>
+            <PlanHeading>{pricePlan.heading}</PlanHeading>
+            <PlanText>{pricePlan.text}</PlanText>
           </PlanContainer>
           <Change>Change</Change>
         </PricePlan>
