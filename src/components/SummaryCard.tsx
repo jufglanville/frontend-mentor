@@ -1,22 +1,24 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import PricePlan from './PricePlan';
 import { PricePlanMap } from '../types';
 import hero from '../assets/illustration-hero.svg';
+import PricePage from './PricePage';
 
 const pricePlan: PricePlanMap = {
   annual: {
+    id: 'id1',
     type: 'annual',
     amount: 59.99,
   },
   monthly: {
+    id: 'id2',
     type: 'monthly',
     amount: 6.99,
   },
 };
 
 const SummaryCard = () => {
-  const [selectedPlan, setSelectedPlan] = React.useState(pricePlan.annual);
+  const [selectedPlan, setSelectedPlan] = useState('id1');
 
   return (
     <Card>
@@ -27,9 +29,10 @@ const SummaryCard = () => {
           You can now listen to millions of songs, audiobooks, and podcasts on
           any device anywhere you like!
         </Text>
-        <PricePlan
-          plan={selectedPlan}
-          handleClick={(val) => setSelectedPlan(pricePlan[val])}
+        <PricePage
+          plans={pricePlan}
+          selected={selectedPlan}
+          onHandleClick={(val) => setSelectedPlan(val)}
         />
         <Button>Proceed to Payment</Button>
         <Cancel>Cancel Order</Cancel>

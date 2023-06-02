@@ -5,14 +5,15 @@ import icon from '../assets/icon-music.svg';
 
 interface Props {
   plan: PlanType;
-  handleClick: (val: PriceType) => void;
+  selected: boolean;
+  onHandleClick: (val: string) => void;
 }
 
 type ButtonProps = {
   onClick: (event: React.MouseEventHandler<HTMLButtonElement>) => void;
 };
 
-const PricePlan = ({ plan, handleClick }: Props) => {
+const PricePlan = ({ plan, selected, onHandleClick }: Props) => {
   return (
     <Container>
       <img src={icon} alt="Music Note" />
@@ -20,13 +21,10 @@ const PricePlan = ({ plan, handleClick }: Props) => {
         <Heading>{plan.type} Plan</Heading>
         <Text>${plan.amount}/year</Text>
       </PriceContainer>
-      <ActionLink
-        onClick={() =>
-          handleClick(plan.type === 'annual' ? 'monthly' : 'annual')
-        }
-      >
-        Change
-      </ActionLink>
+      {!selected && (
+        <ActionLink onClick={() => onHandleClick(plan.id)}>Change</ActionLink>
+      )}
+      {selected && <SelectedLink>Selected</SelectedLink>}
     </Container>
   );
 };
@@ -73,6 +71,13 @@ const ActionLink = styled.button<ButtonProps>`
   @media (max-width: 340px) {
     margin: 0;
   }
+`;
+
+const SelectedLink = styled.p`
+  color: var(--desaturated-bright-blue);
+  font-weight: 700;
+  font-size: 0.85rem;
+  margin-left: auto;
 `;
 
 const Text = styled.p`
