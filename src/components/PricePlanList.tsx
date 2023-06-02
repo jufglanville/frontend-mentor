@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import PricePlan from './PricePlan';
-import { PricePlanMap } from '../types';
+import { PricePlans } from '../types';
 
 interface Props {
-  plans: PricePlanMap;
+  plans: PricePlans;
   selected: string;
   onHandleClick: (val: string) => void;
 }
 
-const PricePage = ({ plans, selected, onHandleClick }: Props) => {
+const PricePlanList = ({ plans, selected, onHandleClick }: Props) => {
   return (
     <Container>
       {Object.values(plans).map((plan) => (
@@ -29,4 +29,4 @@ const Container = styled.div`
   gap: 1.5rem;
 `;
 
-export default PricePage;
+export default PricePlanList;

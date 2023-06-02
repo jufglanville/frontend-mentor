@@ -6,6 +6,4 @@ export type PlanType = {
   amount: number;
 };
 
-export type PricePlanMap = {
-  [key: string]: PlanType;
-};
+export type PricePlans = PlanType[];

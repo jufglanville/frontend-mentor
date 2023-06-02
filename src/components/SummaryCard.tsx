@@ -1,21 +1,21 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PricePlanMap } from '../types';
+import { PricePlans } from '../types';
 import hero from '../assets/illustration-hero.svg';
-import PricePage from './PricePage';
+import PricePlanList from './PricePlanList';
 
-const pricePlan: PricePlanMap = {
-  annual: {
+const pricePlan: PricePlans = [
+  {
     id: 'id1',
     type: 'annual',
     amount: 59.99,
   },
-  monthly: {
+  {
     id: 'id2',
     type: 'monthly',
     amount: 6.99,
   },
-};
+];
 
 const SummaryCard = () => {
   const [selectedPlan, setSelectedPlan] = useState('id1');
@@ -29,7 +29,7 @@ const SummaryCard = () => {
           You can now listen to millions of songs, audiobooks, and podcasts on
           any device anywhere you like!
         </Text>
-        <PricePage
+        <PricePlanList
           plans={pricePlan}
           selected={selectedPlan}
           onHandleClick={(val) => setSelectedPlan(val)}
