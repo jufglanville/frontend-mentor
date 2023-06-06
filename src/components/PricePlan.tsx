@@ -1,28 +1,29 @@
 import React from 'react';
 import styled from 'styled-components';
-import { PlanType, PriceType } from '../types';
-import icon from '../assets/icon-music.svg';
+import { PlanType, PricePlanTemplate } from '../types';
 
 interface Props {
+  template: PricePlanTemplate;
   plan: PlanType;
   selected: boolean;
-  onHandleClick: (val: string) => void;
+  onSelect: (val: string) => void;
 }
 
-type ButtonProps = {
-  onClick: (event: React.MouseEventHandler<HTMLButtonElement>) => void;
-};
-
-const PricePlan = ({ plan, selected, onHandleClick }: Props) => {
+const PricePlan = ({ template, plan, selected, onSelect }: Props) => {
   return (
     <Container>
-      <img src={icon} alt="Music Note" />
+      <img src={template.icon} alt={template.altText} />
       <PriceContainer>
-        <Heading>{plan.type} Plan</Heading>
-        <Text>${plan.amount}/year</Text>
+        <Heading>{plan.name}</Heading>
+        <Text>
+          {template.currency}
+          {plan.amount}/{plan.type}
+        </Text>
       </PriceContainer>
       {!selected && (
-        <ActionLink onClick={() => onHandleClick(plan.id)}>Change</ActionLink>
+        <ActionLink onClick={() => onSelect(plan.id)}>
+          {template.actionLabel}
+        </ActionLink>
       )}
       {selected && <SelectedLink>Selected</SelectedLink>}
     </Container>
@@ -58,7 +59,7 @@ const PriceContainer = styled.div`
   }
 `;
 
-const ActionLink = styled.button<ButtonProps>`
+const ActionLink = styled.button`
   color: var(--bright-blue);
   font-weight: 700;
   font-size: 0.85rem;

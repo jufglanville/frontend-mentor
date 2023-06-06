@@ -1,23 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
 import PricePlan from './PricePlan';
-import { PricePlans } from '../types';
+import { PricePlanTemplate, PricePlans } from '../types';
 
 interface Props {
-  plans: PricePlans;
+  template: PricePlanTemplate;
   selected: string;
-  onHandleClick: (val: string) => void;
+  onSelect: (val: string) => void;
 }
 
-const PricePlanList = ({ plans, selected, onHandleClick }: Props) => {
+const PricePlanList = ({ template, selected, onSelect }: Props) => {
   return (
     <Container>
-      {Object.values(plans).map((plan) => (
+      {Object.values(template.plans).map((plan) => (
         <PricePlan
+          template={template}
           key={plan.id}
           plan={plan}
           selected={selected === plan.id}
-          onHandleClick={(id) => onHandleClick(id)}
+          onSelect={(id) => onSelect(id)}
         />
       ))}
     </Container>

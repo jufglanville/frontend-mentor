@@ -1,21 +1,32 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { PricePlans } from '../types';
+import { PricePlanTemplate, PricePlans } from '../types';
 import hero from '../assets/illustration-hero.svg';
+import icon from '../assets/icon-music.svg';
 import PricePlanList from './PricePlanList';
 
 const pricePlan: PricePlans = [
   {
     id: 'id1',
-    type: 'annual',
+    name: 'Annual Plan',
+    type: 'year',
     amount: 59.99,
   },
   {
     id: 'id2',
-    type: 'monthly',
+    name: 'Monthly Plan',
+    type: 'month',
     amount: 6.99,
   },
 ];
+
+const pricePlanTemplate: PricePlanTemplate = {
+  actionLabel: 'Change',
+  icon: icon,
+  altText: 'Music Note',
+  currency: '$',
+  plans: pricePlan,
+};
 
 const SummaryCard = () => {
   const [selectedPlan, setSelectedPlan] = useState('id1');
@@ -30,9 +41,9 @@ const SummaryCard = () => {
           any device anywhere you like!
         </Text>
         <PricePlanList
-          plans={pricePlan}
+          template={pricePlanTemplate}
           selected={selectedPlan}
-          onHandleClick={(val) => setSelectedPlan(val)}
+          onSelect={(val) => setSelectedPlan(val)}
         />
         <Button>Proceed to Payment</Button>
         <Cancel>Cancel Order</Cancel>
