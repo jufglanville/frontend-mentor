@@ -3,27 +3,36 @@ import styled from 'styled-components';
 import { PlanType, PricePlanTemplate } from '../types';
 
 interface Props {
-  template: PricePlanTemplate;
+  actionLabel: string;
+  icon: string;
+  altText: string;
+  currency: string;
   plan: PlanType;
   selected: boolean;
   onSelect: (val: string) => void;
 }
 
-const PricePlan = ({ template, plan, selected, onSelect }: Props) => {
+const PricePlan = ({
+  actionLabel,
+  icon,
+  altText,
+  currency,
+  plan,
+  selected,
+  onSelect,
+}: Props) => {
   return (
     <Container>
-      <img src={template.icon} alt={template.altText} />
+      <img src={icon} alt={altText} />
       <PriceContainer>
         <Heading>{plan.name}</Heading>
         <Text>
-          {template.currency}
+          {currency}
           {plan.amount}/{plan.type}
         </Text>
       </PriceContainer>
       {!selected && (
-        <ActionLink onClick={() => onSelect(plan.id)}>
-          {template.actionLabel}
-        </ActionLink>
+        <ActionLink onClick={() => onSelect(plan.id)}>{actionLabel}</ActionLink>
       )}
       {selected && <SelectedLink>Selected</SelectedLink>}
     </Container>

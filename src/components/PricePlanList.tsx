@@ -14,7 +14,10 @@ const PricePlanList = ({ template, selected, onSelect }: Props) => {
     <Container>
       {Object.values(template.plans).map((plan) => (
         <PricePlan
-          template={template}
+          actionLabel={template.actionLabel}
+          icon={template.icon}
+          altText={template.altText}
+          currency={template.currency}
           key={plan.id}
           plan={plan}
           selected={selected === plan.id}
