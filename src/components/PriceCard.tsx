@@ -4,6 +4,7 @@ import { PricePlanTemplate, PricePlans } from '../types';
 import hero from '../assets/illustration-hero.svg';
 import icon from '../assets/icon-music.svg';
 import PricePlanList from './PricePlanList';
+import Button from './Button';
 
 const pricePlan: PricePlans = [
   {
@@ -45,8 +46,12 @@ const SummaryCard = () => {
           selected={selectedPlan}
           onSelect={(val) => setSelectedPlan(val)}
         />
-        <Button>Proceed to Payment</Button>
-        <Cancel>Cancel Order</Cancel>
+        <Button type="primary" onClick={() => console.log('clicked')}>
+          Proceed to Payment
+        </Button>
+        <Button type="button" onClick={() => console.log('cancel')}>
+          Cancel Order
+        </Button>
       </Content>
     </Card>
   );
@@ -83,22 +88,22 @@ const Text = styled.p`
   letter-spacing: 0.5px;
 `;
 
-const Button = styled.button`
-  background-color: var(--bright-blue);
-  color: white;
-  padding: 1rem;
-  border-radius: 15px;
-  width: 100%;
-  text-align: center;
-  font-weight: 700;
-  font-size: 0.85rem;
-  letter-spacing: 0.5px;
-  box-shadow: 0px 10px 20px rgba(116, 108, 233, 0.4);
-  &:hover {
-    cursor: pointer;
-    background-color: var(--desaturated-bright-blue);
-  }
-`;
+// const Button = styled.button`
+//   background-color: var(--bright-blue);
+//   color: white;
+//   padding: 1rem;
+//   border-radius: 15px;
+//   width: 100%;
+//   text-align: center;
+//   font-weight: 700;
+//   font-size: 0.85rem;
+//   letter-spacing: 0.5px;
+//   box-shadow: 0px 10px 20px rgba(116, 108, 233, 0.4);
+//   &:hover {
+//     cursor: pointer;
+//     background-color: var(--desaturated-bright-blue);
+//   }
+// `;
 
 const Cancel = styled.button`
   color: var(--desaturated-blue);
