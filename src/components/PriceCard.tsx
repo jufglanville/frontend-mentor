@@ -1,35 +1,50 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { PricePlanTemplate, PricePlans } from '../types';
+import hero from '../assets/illustration-hero.svg';
 import icon from '../assets/icon-music.svg';
+import PricePlanList from './PricePlanList';
 
-type PricePlan = {
-  heading: string;
-  text: string;
+const pricePlan: PricePlans = [
+  {
+    id: 'id1',
+    name: 'Annual Plan',
+    type: 'year',
+    amount: 59.99,
+  },
+  {
+    id: 'id2',
+    name: 'Monthly Plan',
+    type: 'month',
+    amount: 6.99,
+  },
+];
+
+const pricePlanTemplate: PricePlanTemplate = {
+  actionLabel: 'Change',
+  icon: icon,
+  altText: 'Music Note',
+  currency: '$',
+  plans: pricePlan,
 };
 
-interface Props {
-  pricePlan: PricePlan;
-  image: string;
-  heading: string;
-  text: string;
-}
+const SummaryCard = () => {
+  const [selectedPlan, setSelectedPlan] = useState('id1');
 
-const PriceCard = ({ pricePlan, image, heading, text }: Props) => {
   return (
     <Card>
-      <img src={image} alt="placeholder" />
+      <img src={hero} alt="placeholder" />
       <Content>
-        <Heading>{heading}</Heading>
-        <Text>{text}</Text>
-        <PricePlan>
-          <img src={icon} alt="Music Note" />
-          <PlanContainer>
-            <PlanHeading>{pricePlan.heading}</PlanHeading>
-            <PlanText>{pricePlan.text}</PlanText>
-          </PlanContainer>
-          <Change>Change</Change>
-        </PricePlan>
+        <Heading>Order Summary</Heading>
+        <Text>
+          You can now listen to millions of songs, audiobooks, and podcasts on
+          any device anywhere you like!
+        </Text>
+        <PricePlanList
+          template={pricePlanTemplate}
+          selected={selectedPlan}
+          onSelect={(val) => setSelectedPlan(val)}
+        />
         <Button>Proceed to Payment</Button>
         <Cancel>Cancel Order</Cancel>
       </Content>
@@ -54,27 +69,8 @@ const Content = styled.div`
   }
 `;
 
-const PlanContainer = styled.div`
-  display: grid;
-  gap: 0.5rem;
-  margin-left: 1.5rem;
-  @media (max-width: 480px) {
-    margin-left: 1rem;
-  }
-  @media (max-width: 340px) {
-    margin: 1rem;
-  }
-`;
-
 const Heading = styled.h1`
   font-size: 1.8rem;
-  font-weight: 900;
-  text-align: center;
-  color: var(--dark-blue);
-`;
-
-const PlanHeading = styled.h2`
-  font-size: 1rem;
   font-weight: 900;
   text-align: center;
   color: var(--dark-blue);
@@ -85,26 +81,6 @@ const Text = styled.p`
   color: var(--desaturated-blue);
   line-height: 1.6;
   letter-spacing: 0.5px;
-`;
-
-const PlanText = styled(Text)`
-  line-height: 1;
-`;
-
-const PricePlan = styled.div`
-  display: flex;
-  align-items: center;
-  padding: 1.5rem;
-  background-color: var(--very-pale-blue);
-  border-radius: 15px;
-  width: 100%;
-  @media (max-width: 480px) {
-    padding: 1.5rem 1rem;
-  }
-  @media (max-width: 340px) {
-    flex-direction: column;
-    padding: 1rem;
-  }
 `;
 
 const Button = styled.button`
@@ -136,20 +112,4 @@ const Cancel = styled.button`
   }
 `;
 
-const Change = styled.button`
-  color: var(--bright-blue);
-  font-weight: 700;
-  font-size: 0.85rem;
-  text-decoration: underline;
-  margin-left: auto;
-  &:hover {
-    cursor: pointer;
-    color: var(--desaturated-bright-blue);
-    text-decoration: none;
-  }
-  @media (max-width: 340px) {
-    margin: 0;
-  }
-`;
-
-export default PriceCard;
+export default SummaryCard;
